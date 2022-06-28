@@ -1,0 +1,11 @@
+[Unit]
+Description=Blockscout
+After=network.target
+
+[Service]
+WorkingDirectory=/home/max/blockscout
+ExecStart=/bin/bash /home/max/blockscout/blockscout_entrypoint.sh
+KillSignal=SIGHUP
+
+[Install]
+WantedBy=default.target
