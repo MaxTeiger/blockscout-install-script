@@ -3,9 +3,21 @@ Description=Blockscout
 After=network.target
 
 [Service]
-WorkingDirectory=/home/max/blockscout
-ExecStart=/bin/bash /home/max/blockscout/blockscout_entrypoint.sh
+WorkingDirectory=/opt/app/blockscout
+ExecStart=/bin/bash /opt/app/blockscout/blockscout_entrypoint.sh
 KillSignal=SIGHUP
+Type=simple
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=blockscout
+User=root
+WorkingDirectory=/opt/app
+Environment="MIX_ENV=prod"
+KillMode=process
+TimeoutStopSec=60
+Restart=on-failure
+RestartSec=5
+RemainAfterExit=no
 
 [Install]
 WantedBy=multi-user.target

@@ -3,6 +3,8 @@ cd /opt
 git clone https://github.com/poanetwork/blockscout
 cd blockscout
 
+source ~/.bashrc
+
 # Install Elixir / Erlang / Node dependencies for the specified version
 asdf install
 
@@ -43,4 +45,7 @@ EOF
 
 # Export required environment variables in profile for persisting accross
 # sessions
-echo "export $(grep -v '^#' /env/.env | tr '\n' '\0' | xargs -0 '\n')" > ~/.bashrc
+parent_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
+cd "$parent_path"
+
+echo "export $(grep -v '^#' ../env/.env | tr '\n' '\0' | xargs -0 '\n')" > ~/.bashrc
