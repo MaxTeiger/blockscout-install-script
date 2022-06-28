@@ -8,4 +8,4 @@ ExecStart=/bin/bash /home/max/blockscout/blockscout_entrypoint.sh
 KillSignal=SIGHUP
 
 [Install]
-WantedBy=default.target
+WantedBy=multi-user.target
